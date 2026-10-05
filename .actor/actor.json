@@ -1,0 +1,28 @@
+{
+  "actorSpecification": 1,
+  "name": "brazil-cnpj-markdown",
+  "title": "Brazil CNPJ → Company Markdown DD Card",
+  "description": "Batch Brazilian CNPJ lookups via BrasilAPI (keyless) with CNPJ.ws / ReceitaWS fallback or your own key. Markdown due-diligence cards: identity, status, CNAE, address, QSA partners, source. RAG chunks. No email/phone output. Failed rows free. 256 MB.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "minMemoryMbytes": 128,
+  "maxMemoryMbytes": 1024,
+  "defaultRunOptions": {
+    "build": "latest",
+    "memoryMbytes": 256,
+    "timeoutSecs": 3600
+  },
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "dockerfile": "../Dockerfile",
+  "readme": "../README.md",
+  "changelog": "../CHANGELOG.md",
+  "categories": [
+    "BUSINESS",
+    "DEVELOPER_TOOLS",
+    "AUTOMATION"
+  ]
+}

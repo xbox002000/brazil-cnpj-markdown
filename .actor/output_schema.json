@@ -1,0 +1,31 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Brazil CNPJ Markdown output",
+  "description": "One dataset item per CNPJ, plus REPORT.md, SUMMARY, OUTPUT and optional CHUNKS.jsonl in the default key-value store. Never includes email or telephone.",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Company cards",
+      "description": "Dataset items: cnpj, razaoSocial, nomeFantasia, situacao, CNAE principal + secundários, address, capitalSocial, QSA summary, markdown, source, errorClass.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+    },
+    "reportMarkdown": {
+      "type": "string",
+      "title": "Markdown report (REPORT.md)",
+      "description": "Due-diligence cards: Identity, Status, CNAE, Address, QSA, Source attribution.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/REPORT.md"
+    },
+    "chunks": {
+      "type": "string",
+      "title": "RAG chunks (CHUNKS.jsonl)",
+      "description": "One JSON line per card section with cnpj / section / text, ready to embed.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/CHUNKS.jsonl"
+    },
+    "summary": {
+      "type": "string",
+      "title": "Run summary (SUMMARY)",
+      "description": "cnpjsOk, cnpjsFailed, byClass, bySource, charged, durationSecs, peakMemoryMb.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/SUMMARY"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "cnpjs": ["33000167000101"],
+  "provider": "auto",
+  "includeQsa": true,
+  "includeRagChunks": true
+}

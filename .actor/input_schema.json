@@ -1,0 +1,130 @@
+{
+  "title": "Brazil CNPJ → Markdown DD card input",
+  "description": "Paste Brazilian CNPJs (punctuation OK). Default provider: BrasilAPI (keyless public JSON), falling back to CNPJ.ws / ReceitaWS public endpoints. Bring your own ReceitaWS or CNPJ.ws commercial key for production volume. Email and telephone are never output. Only successful cards are charged.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "cnpjs": {
+      "title": "CNPJs",
+      "type": "array",
+      "description": "One CNPJ per line, e.g. 33.000.167/0001-01 or 33000167000101. Punctuation and spaces are stripped, numbers shorter than 14 digits are left-padded with zeros, check digits are validated (invalid rows are free). Duplicates dropped.",
+      "editor": "stringList",
+      "prefill": ["33000167000101"],
+      "sectionCaption": "Inputs"
+    },
+    "datasetId": {
+      "title": "Dataset ID (CNPJ list)",
+      "type": "string",
+      "description": "Optional. Read CNPJs from another run's dataset (field from 'CNPJ field', else cnpj / CNPJ / taxId / documento).",
+      "editor": "textfield",
+      "sectionCaption": "Inputs"
+    },
+    "keyValueStoreId": {
+      "title": "Key-value store ID (CNPJ list)",
+      "type": "string",
+      "description": "Optional. Read CNPJs from a key-value record: JSON array, {\"cnpjs\": [...]}, or plain text with one CNPJ per line.",
+      "editor": "textfield",
+      "sectionCaption": "Inputs"
+    },
+    "keyValueRecordKey": {
+      "title": "Key-value record key",
+      "type": "string",
+      "description": "Record key inside the key-value store.",
+      "editor": "textfield",
+      "default": "INPUT_CNPJS",
+      "sectionCaption": "Inputs"
+    },
+    "cnpjField": {
+      "title": "CNPJ field (dataset / JSON objects)",
+      "type": "string",
+      "description": "Optional. Name of the field holding the CNPJ in dataset items or JSON objects.",
+      "editor": "textfield",
+      "sectionCaption": "Inputs"
+    },
+    "provider": {
+      "title": "Provider",
+      "type": "string",
+      "description": "auto = BrasilAPI first, then (with apiKey) your keyed provider, then the remaining keyless public endpoint. brasilapi / cnpjws / receitaws = that provider only (cnpjws and receitaws use your apiKey when given, else their rate-limited public endpoints).",
+      "editor": "select",
+      "enum": ["auto", "brasilapi", "cnpjws", "receitaws"],
+      "enumTitles": ["Auto (BrasilAPI → fallback)", "BrasilAPI only (keyless)", "CNPJ.ws only", "ReceitaWS only"],
+      "default": "auto",
+      "sectionCaption": "Provider & key"
+    },
+    "apiKey": {
+      "title": "Provider API key (optional)",
+      "type": "string",
+      "description": "Optional ReceitaWS token (sent as Authorization: Bearer) or CNPJ.ws commercial token (sent as x_api_token to comercial.cnpj.ws). Not needed for BrasilAPI. Stored encrypted, never logged or output. Placeholders like YOUR_KEY are ignored.",
+      "editor": "textfield",
+      "isSecret": true,
+      "sectionCaption": "Provider & key"
+    },
+    "keyProvider": {
+      "title": "Key belongs to (auto mode)",
+      "type": "string",
+      "description": "Which provider your apiKey is for when provider=auto.",
+      "editor": "select",
+      "enum": ["receitaws", "cnpjws"],
+      "enumTitles": ["ReceitaWS", "CNPJ.ws commercial"],
+      "default": "receitaws",
+      "sectionCaption": "Provider & key"
+    },
+    "stopOnAuthError": {
+      "title": "Stop using key after auth error",
+      "type": "boolean",
+      "description": "After the keyed provider returns 401/403 once, skip it for the remaining CNPJs (auto mode keeps using keyless providers). Failed rows are free.",
+      "default": true,
+      "sectionCaption": "Provider & key"
+    },
+    "includeQsa": {
+      "title": "Include QSA (partners / administrators)",
+      "type": "boolean",
+      "description": "Add a QSA summary: names, roles and entry date only. No CPF fragments, ages or contact details.",
+      "default": true,
+      "sectionCaption": "Output"
+    },
+    "includeRagChunks": {
+      "title": "Write RAG chunks (CHUNKS.jsonl)",
+      "type": "boolean",
+      "description": "Write one self-describing chunk per card section to the key-value store record CHUNKS.jsonl.",
+      "default": true,
+      "sectionCaption": "Output"
+    },
+    "maxItems": {
+      "title": "Max CNPJs",
+      "type": "integer",
+      "description": "Stop after this many unique valid CNPJs (0 = no limit).",
+      "default": 100,
+      "minimum": 0,
+      "maximum": 100000,
+      "sectionCaption": "Limits"
+    },
+    "maxConcurrency": {
+      "title": "Max concurrency",
+      "type": "integer",
+      "description": "Parallel lookups. Public endpoints are rate-limited; 2 is a safe default.",
+      "default": 2,
+      "minimum": 1,
+      "maximum": 5,
+      "sectionCaption": "Limits"
+    },
+    "maxRetries": {
+      "title": "Max retries",
+      "type": "integer",
+      "description": "Retries per provider for HTTP 429 (honours Retry-After, capped at 30 s), 5xx, timeouts and network errors. 400/401/403/404 are not retried.",
+      "default": 3,
+      "minimum": 0,
+      "maximum": 6,
+      "sectionCaption": "Limits"
+    },
+    "requestTimeoutSecs": {
+      "title": "Request timeout (seconds)",
+      "type": "integer",
+      "description": "Timeout for each provider HTTP call.",
+      "default": 30,
+      "minimum": 5,
+      "maximum": 120,
+      "sectionCaption": "Limits"
+    }
+  }
+}

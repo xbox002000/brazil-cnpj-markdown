@@ -1,0 +1,49 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": ["cnpjFormatted", "razaoSocial", "nomeFantasia", "situacao", "matrizFilial", "cnaePrincipal.codeFormatted", "cnaePrincipal.description", "address.municipio", "address.uf", "capitalSocial", "qsaCount", "source", "status", "errorClass"],
+        "flatten": ["cnaePrincipal", "address"]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "cnpjFormatted": { "label": "CNPJ", "format": "text" },
+          "razaoSocial": { "label": "Razão social", "format": "text" },
+          "nomeFantasia": { "label": "Nome fantasia", "format": "text" },
+          "situacao": { "label": "Situação", "format": "text" },
+          "matrizFilial": { "label": "Matriz/Filial", "format": "text" },
+          "cnaePrincipal.codeFormatted": { "label": "CNAE", "format": "text" },
+          "cnaePrincipal.description": { "label": "Activity", "format": "text" },
+          "address.municipio": { "label": "City", "format": "text" },
+          "address.uf": { "label": "UF", "format": "text" },
+          "capitalSocial": { "label": "Capital (R$)", "format": "number" },
+          "qsaCount": { "label": "QSA", "format": "number" },
+          "source": { "label": "Source", "format": "text" },
+          "status": { "label": "Result", "format": "text" },
+          "errorClass": { "label": "Error", "format": "text" }
+        }
+      }
+    },
+    "failed": {
+      "title": "Failed (not charged)",
+      "transformation": {
+        "fields": ["cnpj", "errorClass", "httpStatus", "attempts", "errorMessage", "hint"]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "cnpj": { "label": "CNPJ", "format": "text" },
+          "errorClass": { "label": "Error", "format": "text" },
+          "httpStatus": { "label": "HTTP", "format": "number" },
+          "attempts": { "label": "Attempts", "format": "number" },
+          "errorMessage": { "label": "Message", "format": "text" },
+          "hint": { "label": "Hint", "format": "text" }
+        }
+      }
+    }
+  }
+}

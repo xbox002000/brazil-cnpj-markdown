@@ -1,0 +1,106 @@
+{
+  "abertura": "28/09/1966",
+  "situacao": "ATIVA",
+  "tipo": "MATRIZ",
+  "nome": "PETROLEO BRASILEIRO S A PETROBRAS",
+  "fantasia": "PETROBRAS - EDISE",
+  "porte": "DEMAIS",
+  "natureza_juridica": "203-8 - Sociedade de Economia Mista",
+  "atividade_principal": [
+    {
+      "code": "06.00-0-01",
+      "text": "Extração de petróleo e gás natural"
+    }
+  ],
+  "atividades_secundarias": [
+    {
+      "code": "19.21-7-00",
+      "text": "Fabricação de produtos do refino de petróleo"
+    },
+    {
+      "code": "35.20-4-01",
+      "text": "Produção de gás; processamento de gás natural"
+    },
+    {
+      "code": "35.20-4-02",
+      "text": "Distribuição de combustíveis gasosos por redes urbanas"
+    },
+    {
+      "code": "46.81-8-01",
+      "text": "Comércio atacadista de álcool carburante, biodiesel, gasolina e demais derivados de petróleo, exceto lubrificantes, não realizado por transportador retalhista (T.R.R.)"
+    },
+    {
+      "code": "86.30-5-99",
+      "text": "Atividades de atenção ambulatorial não especificadas anteriormente"
+    }
+  ],
+  "qsa": [
+    {
+      "nome": "MAGDA MARIA DE REGINA CHAMBRIARD",
+      "qual": "16-Presidente"
+    },
+    {
+      "nome": "RICARDO WAGNER DE ARAUJO",
+      "qual": "10-Diretor"
+    },
+    {
+      "nome": "SYLVIA MARIA COUTO DOS ANJOS",
+      "qual": "10-Diretor"
+    },
+    {
+      "nome": "ANGELICA GARCIA COBAS LAUREANO",
+      "qual": "10-Diretor"
+    },
+    {
+      "nome": "FERNANDO SABBI MELGAREJO",
+      "qual": "10-Diretor"
+    },
+    {
+      "nome": "RENATA FARIA RODRIGUES BARUZZI LOPES",
+      "qual": "10-Diretor"
+    },
+    {
+      "nome": "WILLIAM FRANCA DA SILVA",
+      "qual": "10-Diretor"
+    },
+    {
+      "nome": "CLARICE COPPETTI",
+      "qual": "10-Diretor"
+    }
+  ],
+  "logradouro": "AV REPUBLICA DO CHILE",
+  "numero": "65",
+  "municipio": "RIO DE JANEIRO",
+  "bairro": "CENTRO",
+  "uf": "RJ",
+  "cep": "20.031-170",
+  "email": "cc-rfisc@petrobras.com.br",
+  "telefone": "(21) 2166-0000",
+  "data_situacao": "03/11/2005",
+  "efr": "UNIÃO",
+  "cnpj": "33.000.167/0001-01",
+  "ultima_atualizacao": "2026-10-04T14:11:39.763Z",
+  "status": "OK",
+  "complemento": "",
+  "motivo_situacao": "",
+  "situacao_especial": "",
+  "data_situacao_especial": "",
+  "capital_social": "205431960490.52",
+  "simples": {
+    "optante": false,
+    "data_opcao": null,
+    "data_exclusao": null,
+    "ultima_atualizacao": "2026-09-15T23:59:59.000Z"
+  },
+  "simei": {
+    "optante": false,
+    "data_opcao": null,
+    "data_exclusao": null,
+    "ultima_atualizacao": "2026-09-15T23:59:59.000Z"
+  },
+  "extra": {},
+  "billing": {
+    "free": true,
+    "database": true
+  }
+}

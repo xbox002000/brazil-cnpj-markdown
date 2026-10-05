@@ -1,0 +1,7 @@
+{
+  "cnpjs": ["33.000.167/0001-01", "191", "33000167000102", "99999999000191"],
+  "provider": "brasilapi",
+  "includeQsa": true,
+  "includeRagChunks": true,
+  "maxRetries": 1
+}
